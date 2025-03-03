@@ -1,39 +1,31 @@
 import React from 'react';
 
-class KeyPress extends React.Component {
+export class App extends React.Component {
   state = {
-    lastPressedKey: '',
+    pressedKey: '',
   };
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress);
+    document.addEventListener('keyup', this.handleKeyPress);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress);
+    document.removeEventListener('keyup', this.handleKeyPress);
   }
 
   handleKeyPress = (event: KeyboardEvent) => {
-    this.setState({ lastPressedKey: event.key });
+    this.setState({ pressedKey: event.key });
   };
 
   render() {
     return (
       <div className="App">
         <p className="App__message">
-          {this.state.lastPressedKey
-            ? `The last pressed key is [${this.state.lastPressedKey}]`
+          {this.state.pressedKey
+            ? `The last pressed key is [${this.state.pressedKey}]`
             : 'Nothing was pressed yet'}
         </p>
       </div>
     );
   }
 }
-
-export const App: React.FC = () => {
-  return (
-    <div>
-      <KeyPress />
-    </div>
-  );
-};
