@@ -13,7 +13,7 @@ export class App extends React.Component {
     document.removeEventListener('keyup', this.handleKeyPress);
   }
 
-  handleKeyPress = (event: React.KeyboardEvent) => {
+  handleKeyPress = (event: KeyboardEvent) => {
     this.setState({ pressedKey: event.key });
   };
 
